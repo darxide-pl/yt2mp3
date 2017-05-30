@@ -20,38 +20,63 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filemon</title>
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
+    <!-- Vendor CSS -->
+    <link href="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet">
+    <link href="/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">        
+    <link href="/vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/vendors/select2/select2.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
+        
 
+    <link href="/css/app_1.min.css" rel="stylesheet">
+    <link href="/css/app_2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+    <?= $this->Element('header') ?>
+
+    <section id="main" class="<?= $this->request->params['action'] == 'view' ? 'short' : '' ?>" data-layout="layout-1">
+        <?= $this->fetch('breadcrumbs') ?>
+        <?= $this->Element('sidebar') ?>
+        <section id="content">
+            <div class="container">
+                <?= $this->fetch('content') ?>
+            </div>
+        </section>
+    </section>
+
+
+    <footer id="footer">
+        Copyright &copy; 2017 <?= date('Y') > 2017 ? '- '.date('Y') : '' ?> yt2mp3
+        
+        <ul class="f-menu">
+            <li><a href="<?= $this->Url->build('/') ?>"><?= __('Download') ?></a></li>
+            <li><a href="<?= $this->Url->build(['controller' => 'Search', 'action' => 'index']) ?>"><?= __('Search') ?></a></li>
+            <li>
+                <a href="<?= $this->Url->build(['controller' => 'Top', 'action' => 'index']) ?>"><?= __('Top') ?></a>
             </li>
         </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
-    </div>
-    <footer>
-    </footer>
+    </footer>    
+
+    <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>        
+    <script src="/vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/vendors/ui/jquery-ui.min.js"></script>
+    <script src="/js/app.min.js"></script>
+    <script src="/js/main.js"></script>    
 </body>
 </html>
