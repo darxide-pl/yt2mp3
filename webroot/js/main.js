@@ -1,4 +1,4 @@
-+function() {
+;+function() {
 	$(document).on('submit' , '.__download' , function(e) {
 		e.preventDefault()
 		youtube.convert(e)
@@ -6,6 +6,12 @@
 	})
 	$(document).on('click' , '.__save' , function(e) {
 		youtube.download(e)
+	})
+
+	$(document).on('click' , '.__play' , function(e) {
+		e.preventDefault()
+		youtube.play(e)
+		return false
 	})
 }()
 
@@ -67,14 +73,14 @@ const youtube = {
 		})		
 	}, 
 
-	force : function(link) {
+	force : function(link, time = 60000) {
 		setTimeout(function() {
 			$.post('/download/force' , {
 				link : link
 			}).done(function(data) {
 				let response = JSON.parse(data)
 				if(typeof response.data.err != 'undefined') {
-					youtube.force(link)
+					youtube.force(link, 20000)
 				} 
 
 				if(typeof response.data.e != 'undefined'){
@@ -83,8 +89,16 @@ const youtube = {
 					})
 				}
 			})		
-		}, 60000)
-	}
+		}, time)
+	}, 
+
+	play : function(e) {
+		let btn = $(e.currentTarget),
+			item = btn.closest('.youtube-item')
+
+		item.find('.youtube-item__image').html('<iframe type="text/html" width="150" height="150"'+
+  					'src="http://www.youtube.com/embed/'+item.data('link')+'?autoplay=1" frameborder="0"/>')
+	}	
 }
 
 const flash = {

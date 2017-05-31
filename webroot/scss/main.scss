@@ -16,6 +16,7 @@
 			width: 150px;
 			height: 150px;
 			position: relative;
+			z-index: 1;
 		}
 		&__content {
 			position: absolute;
@@ -47,9 +48,4 @@
     margin-bottom: -20px;
     margin-left: 5px;
     background: #FF9800;
-    &::after {
-    	content: "please wait";
-    	text-align: center;
-    	display: block;
-    }
 }

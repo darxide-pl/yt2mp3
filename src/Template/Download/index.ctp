@@ -32,7 +32,7 @@
     <div class="col-lg-5 col-md-6 col-lg-offset-1">
         <h4 class="m-b-15"><?= __('Latest downloads') ?></h4>
         <?php if(count($last)):foreach($last as $v): ?>
-            <div class="bs-item z-depth-2 youtube-item">
+            <div class="bs-item z-depth-2 youtube-item" data-id="<?= $v->id ?>" data-link="<?= $v->link ?>">
                 <div class="youtube-item__image" style="background-image: url('https://i1.ytimg.com/vi/<?= $v->link ?>/0.jpg')">
                     <span class="label label-warning youtube-item__label">
                         <?= $this->Time->format($v->length) ?>
@@ -43,7 +43,7 @@
                         <?= $v->title ?>
                         <form method="post" class="__download">
                             <input type="hidden" name="link" value="https://www.youtube.com/watch?v=<?= $v->link ?>" />
-                            <a href="https://www.youtube.com/watch?v=<?= $v->link ?>" class="btn btn-sm btn-danger waves-effect m-t-10" target="_blank">
+                            <a href="https://www.youtube.com/watch?v=<?= $v->link ?>" class="btn btn-sm btn-danger waves-effect m-t-10 __play" target="_blank">
                                 <i class="zmdi zmdi-play"></i>
                             </a>
                             <button type="submit" class="btn bgm-teal waves-effect btn-sm m-t-10">
@@ -62,7 +62,7 @@
     <div class="col-lg-5 col-md-6">
         <h4 class="m-b-15"><?= __('Top downloads') ?></h4>
         <?php if(count($top)):foreach($top as $v): ?>
-            <div class="bs-item z-depth-2 youtube-item">
+            <div class="bs-item z-depth-2 youtube-item" data-id="<?= $v->id ?>" data-link="<?= $v->link ?>">
                 <div class="youtube-item__image" style="background-image: url('https://i1.ytimg.com/vi/<?= $v->link ?>/0.jpg')">
                     <span class="label label-warning youtube-item__label">
                         <?= $this->Time->format($v->length) ?>
@@ -73,7 +73,7 @@
                         <?= $v->title ?>
                         <form method="post" class="__download">
                             <input type="hidden" name="link" value="https://www.youtube.com/watch?v=<?= $v->link ?>" />
-                            <a href="https://www.youtube.com/watch?v=<?= $v->link ?>" class="btn btn-sm btn-danger waves-effect m-t-10" target="_blank">
+                            <a href="https://www.youtube.com/watch?v=<?= $v->link ?>" class="btn btn-sm btn-danger waves-effect m-t-10 __play" target="_blank">
                                 <i class="zmdi zmdi-play"></i>
                             </a>                            
                             <button type="submit" class="btn bgm-teal waves-effect btn-sm m-t-10">
