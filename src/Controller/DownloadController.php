@@ -188,4 +188,25 @@ class DownloadController extends AppController
 
 	}
 
+	public function play() {
+		
+		$t = $this->request->getData();
+		$this->loadModel('ItemPlays');
+		$this->loadModel('Items');
+
+		$item = $this->Items->findById($t['id'])->first();
+
+		if(is_null($item)) {
+			die;
+		}
+
+		$o = $this->ItemPlays->newEntity();
+		$o->add_date = date('Y-m-d H:i:s');
+		$o->item_id = $item->id;
+
+		$this->ItemPlays->save($o);
+		die;
+
+	}
+
 }

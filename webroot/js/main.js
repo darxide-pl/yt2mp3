@@ -98,6 +98,10 @@ const youtube = {
 
 		item.find('.youtube-item__image').html('<iframe type="text/html" width="150" height="150"'+
   					'src="http://www.youtube.com/embed/'+item.data('link')+'?autoplay=1" frameborder="0"/>')
+
+		$.post('/download/play' , {
+			id : item.data('id')
+		})
 	}	
 }
 
