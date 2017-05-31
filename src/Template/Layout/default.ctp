@@ -23,7 +23,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Filemon</title>
+    <title>yt2mp3</title>
 
     <!-- Vendor CSS -->
     <link href="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
@@ -58,7 +58,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 
     <footer id="footer">
-        Copyright &copy; 2017 <?= date('Y') > 2017 ? '- '.date('Y') : '' ?> yt2mp3
+        Copyright &copy; 2017 <?= date('Y') > 2017 ? '- '.date('Y') : '' ?> <a href="http://www.dariuszm.pl">dariuszm.pl</a>
         
         <ul class="f-menu">
             <li><a href="<?= $this->Url->build('/') ?>"><?= __('Download') ?></a></li>
