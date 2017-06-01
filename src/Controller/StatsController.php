@@ -17,12 +17,13 @@ class StatsController extends AppController
 		
 		$this->loadModel('Items');
 		$this->loadModel('ItemPlays');
+		$this->loadModel('ItemDownloads');
 
 		$total_mb = $this->megabytes_total();
 		$total_dw = $this->total_downloads();
+		$total_pl = $this->total_plays();
 
-
-		$this->set(compact('total_mb', 'total_dw'));
+		$this->set(compact('total_mb', 'total_dw', 'total_pl'));
 
 	}
 
@@ -44,7 +45,7 @@ class StatsController extends AppController
 	}
 
 	private function total_downloads() {
-		$query = $this->ItemPlays->find('all' , [
+		$query = $this->ItemDownloads->find('all' , [
 					'fields' => [
 						'total' => 'COUNT(id)'
 					]
@@ -52,6 +53,17 @@ class StatsController extends AppController
 			->first();
 
 		return $query->total;
+	}
+
+	private function total_plays() {
+		$query = $this->ItemPlays->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(id)'
+					]
+				])
+			->first();
+
+		return $query->total;		
 	}
 
 }

@@ -34,8 +34,8 @@
                 <div class="clearfix">
                     <div class="chart stats-line"></div>
                     <div class="count">
-                        <small>Total Sales</small>
-                        <h2>$ 458,778</h2>
+                        <small><?= __('Total plays') ?></small>
+                        <h2><?= $total_pl ?></h2>
                     </div>
                 </div>
             </div>
