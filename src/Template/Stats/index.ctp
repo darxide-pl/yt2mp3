@@ -22,8 +22,8 @@
                 <div class="clearfix">
                     <div class="chart stats-bar"></div>
                     <div class="count">
-                        <small>Website Traffics</small>
-                        <h2>987,459</h2>
+                        <small><?= __('Total downloads') ?></small>
+                        <h2><?= $total_dw ?></h2>
                     </div>
                 </div>
             </div>
