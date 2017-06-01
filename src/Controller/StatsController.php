@@ -22,8 +22,9 @@ class StatsController extends AppController
 		$total_mb = $this->megabytes_total();
 		$total_dw = $this->total_downloads();
 		$total_pl = $this->total_plays();
+		$total_udw = $this->total_unique_downloads();
 
-		$this->set(compact('total_mb', 'total_dw', 'total_pl'));
+		$this->set(compact('total_mb', 'total_dw', 'total_pl', 'total_udw'));
 
 	}
 
@@ -59,6 +60,17 @@ class StatsController extends AppController
 		$query = $this->ItemPlays->find('all' , [
 					'fields' => [
 						'total' => 'COUNT(id)'
+					]
+				])
+			->first();
+
+		return $query->total;		
+	}
+
+	private function total_unique_downloads() {
+		$query = $this->ItemDownloads->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(DISTINCT(item_id))'
 					]
 				])
 			->first();

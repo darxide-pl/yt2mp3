@@ -46,8 +46,8 @@
                 <div class="clearfix">
                     <div class="chart stats-bar-2"></div>
                     <div class="count">
-                        <small>Website Impressions</small>
-                        <h2>356,785K</h2>
+                        <small><?= __('Unique video downloads') ?></small>
+                        <h2><?= $total_udw ?></h2>
                     </div>
                 </div>
             </div>
