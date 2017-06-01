@@ -9,11 +9,13 @@
 	&-item {
 		position: relative;
 		margin-bottom: 15px;
+		z-index: 1;
+		border-radius: 5px;
 		&__image {
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			width: 150px;
+			width: 266px;
 			height: 150px;
 			position: relative;
 			z-index: 1;
@@ -24,7 +26,7 @@
 			height: 100%;
 			top: 0;
 			left: 0;
-			padding-left: 168px;
+			padding-left: 286px;
 		}
 		&__title {
 		    padding: 18px 18px 18px 0;

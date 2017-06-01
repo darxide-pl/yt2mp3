@@ -14,7 +14,6 @@ class DownloadController extends AppController
 {
 	public function index() {
 
-
 		$this->loadModel('Items');
 
 		$last = $this->Items->find('all' , [
