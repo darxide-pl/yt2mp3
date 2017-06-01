@@ -75,7 +75,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
     <script src="/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="/vendors/ui/jquery-ui.min.js"></script>
+
+    <?= $this->fetch('bottom') ?>  
+
     <script src="/js/app.min.js"></script>
     <script src="/js/main.js"></script>    
 </body>

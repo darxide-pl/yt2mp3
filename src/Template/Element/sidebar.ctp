@@ -17,5 +17,11 @@
                 <?= __('Top') ?>
             </a>
         </li>   
+        <li>
+            <a href="<?= $this->Url->build(['controller' => 'Stats', 'action' => 'index']) ?>">
+                <i class="zmdi zmdi-chart"></i>
+                <?= __('Stats') ?>
+            </a>
+        </li>           
     </ul>
 </aside>
