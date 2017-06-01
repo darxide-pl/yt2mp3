@@ -93,7 +93,7 @@ class DownloadController extends AppController
 
 		$this->loadModel('Items');
 		$hash = crc32($parse);
-		$o = $this->Items->findByLinkHash($hash)->first();
+		$o = $this->Items->findByLink($parse)->first();
 
 		if(is_null($o)) {
 			$o = $this->Items->newEntity();
@@ -107,7 +107,11 @@ class DownloadController extends AppController
 			if(!$this->Items->save($o)) {
 				$this->error(__('Server fault'));
 			}
+		}
 
+		if($o->size == 0) {
+			$o->size = $response->filesize;
+			$this->Items->save($o);
 		}
 
 		$this->data([
@@ -164,7 +168,7 @@ class DownloadController extends AppController
 
 		$this->loadModel('Items');
 		$hash = crc32($parse);
-		$o = $this->Items->findByLinkHash($hash)->first();
+		$o = $this->Items->findByLink($parse)->first();
 
 		if(is_null($o)) {
 			$o = $this->Items->newEntity();
@@ -178,8 +182,12 @@ class DownloadController extends AppController
 			if(!$this->Items->save($o)) {
 				$this->error(__('Server fault'));
 			}
+		}	
 
-		}		
+		if($o->size == 0) {
+			$o->size = $response->filesize;
+			$this->Items->save($o);
+		}	
 
 		$this->data([
 				'e' => $o->id
@@ -206,6 +214,34 @@ class DownloadController extends AppController
 		$this->ItemPlays->save($o);
 		die;
 
+	}
+
+	public function register() {
+		
+		$t = $this->request->getData();
+		$this->loadModel('Items');
+		$this->loadModel('ItemPlays');
+		$this->loadComponent('Time');
+
+		$item = $this->Items->findByLink($t['id'])->first();
+
+		if(is_null($item)) {
+			$item = $this->Items->newEntity();
+			$item->add_date = date('Y-m-d H:i:s');
+			$item->title = trim(strip_tags($t['title']));
+			$item->link = $t['id'];
+			$item->link_hash = crc32($t['id']); 
+			$item->length = $this->Time->parse($t['time']);
+			$item->size = 0;
+			if($this->Items->save($item)) {
+				$o = $this->ItemPlays->newEntity();
+				$o->add_date = date('Y-m-d H:i:s');
+				$o->item_id = $item->id;
+				$this->ItemPlays->save($o);
+			}
+		}
+
+		die;
 	}
 
 }

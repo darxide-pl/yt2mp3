@@ -109,16 +109,21 @@ const youtube = {
 		let btn = $(e.currentTarget),
 			item = btn.closest('.youtube-item')
 
+		if(btn.hasClass('__not-register')) {
+			$.post('/download/register' , {
+				id : item.data('link'), 
+				time : item.find('.label').text(),
+				title : item.find('.youtube-item__title').text()
+			})
+		} else {		
+			$.post('/download/play' , {
+				id : item.data('id')
+			})
+		}
+
 		item.find('.youtube-item__image').html('<iframe type="text/html" width="266" height="150"'+
   					'src="http://www.youtube.com/embed/'+item.data('link')+'?autoplay=1" frameborder="0"/>')
 
-		if(btn.hasClass('__not-register')) {
-			return
-		}
-
-		$.post('/download/play' , {
-			id : item.data('id')
-		})
 	}, 
 
 	search : function(e, page = null) {
