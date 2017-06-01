@@ -46,7 +46,7 @@
                 <div class="clearfix">
                     <div class="chart stats-bar-2"></div>
                     <div class="count">
-                        <small><?= __('Unique video downloads') ?></small>
+                        <small><?= __('Unique videos downloaded') ?></small>
                         <h2><?= $total_udw ?></h2>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
                 <div class="clearfix">
                     <div class="chart stats-line-2"></div>
                     <div class="count">
-                        <small>Support Tickets</small>
-                        <h2>23,856</h2>
+                        <small><?= __('Unique videos played') ?></small>
+                        <h2><?= $total_upl ?></h2>
                     </div>
                 </div>
             </div>
