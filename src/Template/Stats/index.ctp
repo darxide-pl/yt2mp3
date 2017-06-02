@@ -141,8 +141,8 @@
                             <div class="pie-title"><?= __('Play clicks') ?></div>
                         </div>
                         <div class="easy-pie sub-pie-2" data-percent="21">
-                            <div class="percent">21</div>
-                            <div class="pie-title">Total Ignored</div>
+                            <div class="percent"><?= $this->Number->shorten($click_search) ?></div>
+                            <div class="pie-title"><?= __('Search clicks') ?></div>
                         </div>
                     </div>
                 </div>
