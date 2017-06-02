@@ -45,6 +45,8 @@ class StatsController extends AppController
 
 		$views_month = $this->views_month();
 
+		$click_download = $this->clicks('download');
+
 		$this->set(compact(
 			'total_mb', 
 			'total_dw', 
@@ -59,7 +61,8 @@ class StatsController extends AppController
 			'chart_plays', 
 			'unique_downloads', 
 			'unique_plays',
-			'views_month'
+			'views_month', 
+			'click_download'
 		));
 
 	}
@@ -324,6 +327,20 @@ class StatsController extends AppController
 		}
 
 		return $data;
+	}
+
+	public function clicks($action) {
+		$query = $this->SessionClicks->find('all' , [
+					'fields' => [
+						'n' => 'COUNT(id)'
+					], 
+					'conditions' => [
+						'action' => $action
+					]
+				])
+			->first();
+
+		return $query->n;
 	}
 
 }

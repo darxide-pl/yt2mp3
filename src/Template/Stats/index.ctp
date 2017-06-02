@@ -119,15 +119,15 @@
             <div id="pie-charts" class="dash-widget-item">
                 <div class="dw-item">
                     <div class="dwi-header">
-                        <div class="dwih-title">Email Statistics</div>
+                        <div class="dwih-title"><?= __('Click stats') ?></div>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="text-center p-20 m-t-25">
                         <div class="easy-pie main-pie" data-percent="75">
-                            <div class="percent">45</div>
-                            <div class="pie-title">Total Emails Sent</div>
+                            <div class="percent"><?= $this->Number->shorten($click_download) ?></div>
+                            <div class="pie-title"><?= __('Click download') ?></div>
                         </div>
                     </div>
 
