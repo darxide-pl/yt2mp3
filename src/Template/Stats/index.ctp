@@ -151,9 +151,7 @@
         </div>
 
         <div class="col-md-4 col-sm-6">
-            <div class="dw-item">
-                <div id="weather-widget"></div>
-            </div>
+
         </div>
     </div>
 </div>
@@ -426,4 +424,49 @@
 <script src="/vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
 <script src="/vendors/sparklines/jquery.sparkline.min.js"></script>
 <script src="/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
+<script type="text/javascript">
+var options = {
+    series: {
+        shadowSize: 0,
+        lines: {
+            show: !1,
+            lineWidth: 0
+        }
+    },
+    grid: {
+        borderWidth: 0,
+        labelMargin: 10,
+        hoverable: !0,
+        clickable: !0,
+        mouseActiveRadius: 6
+    },
+    xaxis: {
+        tickDecimals: 0,
+        ticks: !1
+    },
+    yaxis: {
+        tickDecimals: 0,
+        ticks: !1
+    },
+    legend: {
+        show: !1
+    }
+};
+
+for (var d1 = [], i = 0; 10 >= i; i += 1) d1.push([i, parseInt(30 * Math.random())]);
+console.log(d1)
+
+$("#curved-line-chart")[0] && $.plot($("#curved-line-chart"), [{
+    data: d1,
+    lines: {
+        show: !0,
+        fill: .98
+    },
+    label: "Product 1",
+    stack: !0,
+    color: "#1f292f"
+}], options)    
+</script>
+
 <?= $this->end() ?>

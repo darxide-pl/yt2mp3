@@ -24,6 +24,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>yt2mp3</title>
+    <meta name="description" content="Youtube to mp3 converter" />
 
     <!-- Vendor CSS -->
     <link href="/vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
@@ -39,7 +40,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link href="/css/app_1.min.css" rel="stylesheet">
     <link href="/css/app_2.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
