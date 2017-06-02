@@ -230,100 +230,96 @@
 <script src="/vendors/chartjs/Chart.min.js"></script>
 
 <script type="text/javascript">
-var $globalOptions = {
-    scaleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-    scaleFontColor: '#999',
-    scaleFontStyle: '600',
-    tooltipTitleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-    tooltipCornerRadius: 3,
-    maintainAspectRatio: false,
-    responsive: true, 
-    scaleGridLineColor : 'rgba(0,0,0,0)',
-    scaleShowVerticalLines: false, 
-    scaleShowHorizontalLines: false,
-    pointDot : false, 
-    showScale : false, 
-    tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
-};  
+;+function() {
+    var $globalOptions = {
+        scaleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        scaleFontColor: '#999',
+        scaleFontStyle: '600',
+        tooltipTitleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+        tooltipCornerRadius: 3,
+        maintainAspectRatio: false,
+        responsive: true, 
+        scaleGridLineColor : 'rgba(0,0,0,0)',
+        scaleShowVerticalLines: false, 
+        scaleShowHorizontalLines: false,
+        pointDot : false, 
+        showScale : false, 
+        tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
+    };  
 
-function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
-    $("." + id).sparkline(values, {
-        type: "bar",
-        height: height,
-        barWidth: barWidth,
-        barColor: barColor,
-        barSpacing: barSpacing
-    })
-}
+    function sparklineBar(el, values, barWidth) {
+        $(el).sparkline(values, {
+            type: "bar",
+            height: 35,
+            barWidth: barWidth,
+            barColor: "#d6d8d9",
+            barSpacing: 2
+        })
+    }
 
-function sparklineLine(id, values, width, height = 35) {
-    $("." + id).sparkline(values, {
-        type: "line",
-        width: width,
-        height: height,
-        lineColor: '#fff',
-        fillColor: 'rgba(0,0,0,0)',
-        lineWidth: '#d6d8d9',
-        spotColor: '#d6d8d9',
-        spotRadius: 3,
-        maxSpotColor: 'rgba(0,0,0,0)',
-        minSpotColor: 'rgba(0,0,0,0)',        
-        highlightSpotColor: '#fff',
-        highlightLineColor: '#d6d8d9'
-    })
-}
+    function sparklineLine(el, values, width, height = 35) {
+        $(el).sparkline(values, {
+            type: "line",
+            width: width,
+            height: height,
+            lineColor: '#fff',
+            fillColor: 'rgba(0,0,0,0)',
+            lineWidth: '#d6d8d9',
+            spotColor: '#d6d8d9',
+            spotRadius: 3,
+            maxSpotColor: 'rgba(0,0,0,0)',
+            minSpotColor: 'rgba(0,0,0,0)',        
+            highlightSpotColor: '#fff',
+            highlightLineColor: '#d6d8d9'
+        })
+    }
 
-var traffic = <?= json_encode($traffic) ?>
+    var traffic = <?= json_encode($traffic) ?>
 
-var $context  = jQuery('.js-chartjs-lines')[0].getContext('2d');
-var $data = {
-    labels: Object.keys(traffic),
-    datasets: [
-        {
-            label: "<?= h(__('Traffic')) ?>",
-            fillColor: '#d6d8d9',
-            data: Object.values(traffic)
-        },      
-    ]
-};
-$chartLines = new Chart($context).Line($data, $globalOptions); 
+    var $context  = jQuery('.js-chartjs-lines')[0].getContext('2d');
+    var $data = {
+        labels: Object.keys(traffic),
+        datasets: [
+            {
+                label: "<?= h(__('Traffic')) ?>",
+                fillColor: '#d6d8d9',
+                data: Object.values(traffic)
+            },      
+        ]
+    };
+    $chartLines = new Chart($context).Line($data, $globalOptions); 
 
-$(".stats-bar")[0] && sparklineBar(
-    "stats-bar", 
-    <?= json_encode($chart_downloads) ?>, 
-    "35px", 
-    <?= ceil(42 / count($chart_downloads)) ?>, 
-    "#d6d8d9", 
-    2
-);
+    sparklineBar(
+        $(".stats-bar")[0],
+        <?= json_encode($chart_downloads) ?>, 
+        <?= ceil(42 / count($chart_downloads)) ?>, 
+    );
 
-$(".stats-line")[0] && sparklineLine(
-    "stats-line", 
-    <?= json_encode($chart_plays) ?>, 
-    68
-)
+    sparklineLine(
+        $(".stats-line")[0],
+        <?= json_encode($chart_plays) ?>, 
+        68
+    )
 
-$(".stats-bar-2")[0] && sparklineBar(
-    "stats-bar-2", 
-    <?= json_encode($unique_downloads) ?>, 
-    "35px", 
-    <?= ceil(42 / count($unique_downloads)) ?>, 
-    "#d6d8d9", 
-    2
-)
+    sparklineBar(
+        $(".stats-bar-2")[0],
+        <?= json_encode($unique_downloads) ?>,  
+        <?= ceil(42 / count($unique_downloads)) ?>
+    )
 
-$(".stats-line-2")[0] && sparklineLine(
-    "stats-line-2", 
-    <?= json_encode($unique_plays) ?>, 
-    68, 
-)
+    sparklineLine(
+        $(".stats-line-2")[0],
+        <?= json_encode($unique_plays) ?>, 
+        68, 
+    )
 
-$(".dash-widget-visits")[0] && sparklineLine(
-    "dash-widget-visits", 
-    <?= json_encode($views_month) ?>, 
-    "100%",
-    70
-)
+     sparklineLine(
+        $(".dash-widget-visits")[0],
+        <?= json_encode($views_month) ?>, 
+        "100%",
+        68
+    )
+}()
 
 </script>
 
