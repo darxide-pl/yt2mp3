@@ -127,14 +127,14 @@
                     <div class="text-center p-20 m-t-25">
                         <div class="easy-pie main-pie" data-percent="75">
                             <div class="percent"><?= $this->Number->shorten($click_download) ?></div>
-                            <div class="pie-title"><?= __('Click download') ?></div>
+                            <div class="pie-title"><?= __('Download clicks') ?></div>
                         </div>
                     </div>
 
                     <div class="p-t-25 p-b-20 text-center">
                         <div class="easy-pie sub-pie-1" data-percent="56">
-                            <div class="percent">56</div>
-                            <div class="pie-title">Bounce Rate</div>
+                            <div class="percent"><?= $this->Number->shorten($click_convert) ?></div>
+                            <div class="pie-title"><?= __('Convert clicks') ?></div>
                         </div>
                         <div class="easy-pie sub-pie-2" data-percent="84">
                             <div class="percent">84</div>
