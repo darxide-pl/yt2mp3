@@ -32,6 +32,7 @@ class StatsController extends AppController
 		$total_upl = $this->total_unique_plays();
 
 		$page_views = $this->page_views();
+		$page_visitors = $this->page_visitors();
 
 		$this->set(compact(
 			'total_mb', 
@@ -39,7 +40,8 @@ class StatsController extends AppController
 			'total_pl', 
 			'total_udw', 
 			'total_upl', 
-			'page_views'
+			'page_views', 
+			'page_visitors'
 		));
 
 	}
@@ -114,6 +116,17 @@ class StatsController extends AppController
 			->first();
 
 		return $query->total; 
+	}
+
+	private function page_visitors() {
+		$query = $this->Sessions->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(id)'
+					]
+				])
+			->first();
+
+		return $query->total;
 	}
 
 }

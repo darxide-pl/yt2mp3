@@ -96,8 +96,8 @@
                                 <div class="stats-bar-2"></div>
                             </div>
                             <div class="media-body">
-                                <small>Visitors</small>
-                                <h3>24,456,799</h3>
+                                <small><?= __('Visitors') ?></small>
+                                <h3><?= $this->Number->format($page_visitors) ?></h3>
                             </div>
                         </div>
 
