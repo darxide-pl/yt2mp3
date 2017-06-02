@@ -125,22 +125,22 @@
                     <div class="clearfix"></div>
 
                     <div class="text-center p-20 m-t-25">
-                        <div class="easy-pie main-pie" data-percent="75">
+                        <div class="easy-pie main-pie" data-percent="<?= $click_download / $clicks * 100 ?>">
                             <div class="percent"><?= $this->Number->shorten($click_download) ?></div>
                             <div class="pie-title"><?= __('Download clicks') ?></div>
                         </div>
                     </div>
 
                     <div class="p-t-25 p-b-20 text-center">
-                        <div class="easy-pie sub-pie-1" data-percent="56">
+                        <div class="easy-pie sub-pie-1" data-percent="<?= $click_convert / $clicks * 100 ?>">
                             <div class="percent"><?= $this->Number->shorten($click_convert) ?></div>
                             <div class="pie-title"><?= __('Convert clicks') ?></div>
                         </div>
-                        <div class="easy-pie sub-pie-2" data-percent="84">
+                        <div class="easy-pie sub-pie-2" data-percent="<?= $click_play / $clicks * 100 ?>">
                             <div class="percent"><?= $this->Number->shorten($click_play) ?></div>
                             <div class="pie-title"><?= __('Play clicks') ?></div>
                         </div>
-                        <div class="easy-pie sub-pie-2" data-percent="21">
+                        <div class="easy-pie sub-pie-2" data-percent="<?= $click_search / $clicks * 100 ?>">
                             <div class="percent"><?= $this->Number->shorten($click_search) ?></div>
                             <div class="pie-title"><?= __('Search clicks') ?></div>
                         </div>
