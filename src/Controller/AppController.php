@@ -43,6 +43,12 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Cookie');
+
+        $this->Cookie->config('path', '/');
+        $this->Cookie->config([
+            'expires' => '+60 days'
+        ]);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
