@@ -106,8 +106,8 @@
                                 <div class="stats-line"></div>
                             </div>
                             <div class="media-body">
-                                <small>Total Clicks</small>
-                                <h3>13,965</h3>
+                                <small><?= __('Total Clicks') ?></small>
+                                <h3><?= $this->Number->format($clicks) ?></h3>
                             </div>
                         </div>
                     </div>
