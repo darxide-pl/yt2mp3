@@ -41,6 +41,7 @@ class StatsController extends AppController
 		$chart_plays = $this->chart_plays();
 
 		$unique_downloads = $this->chart_unique_downloads();
+		$unique_plays = $this->chart_unique_plays();
 
 		$this->set(compact(
 			'total_mb', 
@@ -54,7 +55,8 @@ class StatsController extends AppController
 			'traffic', 
 			'chart_downloads', 
 			'chart_plays', 
-			'unique_downloads'
+			'unique_downloads', 
+			'unique_plays'
 		));
 
 	}
@@ -266,6 +268,32 @@ class StatsController extends AppController
 		}
 
 		return $data;
+	}
+
+	private function chart_unique_plays() {
+		$query = $this->ItemPlays->find('all' , [
+					'fields' => [
+						'n' => 'COUNT(DISTINCT(item_id))', 
+						'd' => 'DATE(add_date)'
+					], 
+					'group' => ['d'],
+					'order' => [
+						'd' => 'DESC'
+					], 
+					'limit' => 14
+				])
+			->toArray();
+
+		$data = [];
+		$query = array_reverse($query);
+
+		if(count($query)) {
+			foreach($query as $v) {
+				$data[] = $v->n;
+			}
+		}
+
+		return $data;		
 	}
 
 }

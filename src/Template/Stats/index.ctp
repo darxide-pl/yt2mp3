@@ -312,6 +312,12 @@ $(".stats-bar-2")[0] && sparklineBar(
     2
 )
 
+$(".stats-line-2")[0] && sparklineLine(
+    "stats-line-2", 
+    <?= json_encode($unique_plays) ?>, 
+    68, 
+)
+
 </script>
 
 <?= $this->end() ?>
