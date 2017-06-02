@@ -44,10 +44,11 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');
+        $this->loadComponent('Session');
 
         $this->Cookie->config('path', '/');
         $this->Cookie->config([
-            'expires' => '+60 days'
+            'expires' => '+1 day'
         ]);
 
         /*

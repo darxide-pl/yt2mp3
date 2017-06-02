@@ -15,6 +15,7 @@ class DownloadController extends AppController
 	public function index() {
 
 		$this->loadModel('Items');
+		$this->Session->view('download');
 
 		$last = $this->Items->find('all' , [
 					'join' => [

@@ -15,6 +15,8 @@ class SearchController extends AppController
 
     public function index() {
 
+        $this->Session->view('search');
+
     }
 
     public function find() {

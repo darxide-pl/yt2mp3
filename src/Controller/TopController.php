@@ -16,6 +16,7 @@ class TopController extends AppController
 	public function index() {
 		
 		$this->loadModel('Items');
+		$this->Session->view('top');
 
 		$dw_month = $this->downloads_month();
 		$dw_year = $this->downloads_year();

@@ -18,6 +18,7 @@ class StatsController extends AppController
 		$this->loadModel('Items');
 		$this->loadModel('ItemPlays');
 		$this->loadModel('ItemDownloads');
+		$this->Session->view('stats');
 
 		$total_mb = $this->megabytes_total();
 		$total_dw = $this->total_downloads();
