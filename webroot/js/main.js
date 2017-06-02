@@ -26,6 +26,12 @@
 		youtube.search(e, $(this).data('page'))
 	})
 
+	$(document).on('ready' , function(e) {
+		if($('[name="query"]').length && $('[name="query"]').val()) {
+			youtube.search(e)
+		}
+	})
+
 }()
 
 const youtube = {

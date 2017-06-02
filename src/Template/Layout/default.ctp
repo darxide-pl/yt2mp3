@@ -61,10 +61,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         Copyright &copy; 2017 <?= date('Y') > 2017 ? '- '.date('Y') : '' ?> <a href="http://www.dariuszm.pl">dariuszm.pl</a>
         
         <ul class="f-menu">
-            <li><a href="<?= $this->Url->build('/') ?>"><?= __('Download') ?></a></li>
-            <li><a href="<?= $this->Url->build(['controller' => 'Search', 'action' => 'index']) ?>"><?= __('Search') ?></a></li>
+            <li>
+                <a href="<?= $this->Url->build('/') ?>"><?= __('Download') ?></a>
+            </li>
+            <li>
+                <a href="<?= $this->Url->build(['controller' => 'Search', 'action' => 'index']) ?>"><?= __('Search') ?></a>
+            </li>
             <li>
                 <a href="<?= $this->Url->build(['controller' => 'Top', 'action' => 'index']) ?>"><?= __('Top') ?></a>
+            </li>
+            <li>
+                <a href="<?= $this->Url->build(['controller' => 'Stats', 'action' => 'index']) ?>"><?= __('Stats') ?></a>
             </li>
         </ul>
     </footer>    
