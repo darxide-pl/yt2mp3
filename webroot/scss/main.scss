@@ -52,3 +52,12 @@
     margin-left: 5px;
     background: #FF9800;
 }
+
+.chart {
+	&-edge {
+	    margin: 20px 0px 0 -4px !important;
+	    overflow: hidden;
+	    position: relative;
+	    top: 9px;		
+	}
+}

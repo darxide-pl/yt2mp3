@@ -46,8 +46,8 @@ class AppController extends Controller
         $this->loadComponent('Cookie');
         $this->loadComponent('Session');
 
-        $this->Cookie->config('path', '/');
-        $this->Cookie->config([
+        $this->Cookie->configKey('v', 'path', '/');
+        $this->Cookie->configKey('v', [
             'expires' => '+1 day'
         ]);
 
