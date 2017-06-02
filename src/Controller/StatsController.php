@@ -18,15 +18,29 @@ class StatsController extends AppController
 		$this->loadModel('Items');
 		$this->loadModel('ItemPlays');
 		$this->loadModel('ItemDownloads');
+		$this->loadModel('Sessions');
+		$this->loadModel('SessionClicks');
+		$this->loadModel('SessionViews');
+
 		$this->Session->view('stats');
 
 		$total_mb = $this->megabytes_total();
+
 		$total_dw = $this->total_downloads();
 		$total_pl = $this->total_plays();
 		$total_udw = $this->total_unique_downloads();
 		$total_upl = $this->total_unique_plays();
 
-		$this->set(compact('total_mb', 'total_dw', 'total_pl', 'total_udw', 'total_upl'));
+		$page_views = $this->page_views();
+
+		$this->set(compact(
+			'total_mb', 
+			'total_dw', 
+			'total_pl', 
+			'total_udw', 
+			'total_upl', 
+			'page_views'
+		));
 
 	}
 
@@ -89,6 +103,17 @@ class StatsController extends AppController
 			->first();
 
 		return $query->total;		
+	}
+
+	private function page_views() {
+		$query = $this->SessionViews->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(id)'
+					]
+				])
+			->first();
+
+		return $query->total; 
 	}
 
 }

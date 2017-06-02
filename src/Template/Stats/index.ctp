@@ -35,7 +35,7 @@
                     <div class="chart stats-line"></div>
                     <div class="count">
                         <small><?= __('Total plays') ?></small>
-                        <h2><?= $total_pl ?></h2>
+                        <h2><?= $this->Number->format($total_pl) ?></h2>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <div class="chart stats-bar-2"></div>
                     <div class="count">
                         <small><?= __('Unique videos downloaded') ?></small>
-                        <h2><?= $total_udw ?></h2>
+                        <h2><?= $this->Number->format($total_udw) ?></h2>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <div class="chart stats-line-2"></div>
                     <div class="count">
                         <small><?= __('Unique videos played') ?></small>
-                        <h2><?= $total_upl ?></h2>
+                        <h2><?= $this->Number->format($total_upl) ?></h2>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
                                 <div class="stats-bar"></div>
                             </div>
                             <div class="media-body">
-                                <small>Page Views</small>
-                                <h3>47,896,536</h3>
+                                <small><?= __('Page Views') ?></small>
+                                <h3><?= $this->Number->format($page_views) ?></h3>
                             </div>
                         </div>
 
@@ -96,7 +96,7 @@
                                 <div class="stats-bar-2"></div>
                             </div>
                             <div class="media-body">
-                                <small>Site Visitors</small>
+                                <small>Visitors</small>
                                 <h3>24,456,799</h3>
                             </div>
                         </div>
