@@ -256,6 +256,23 @@ function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
     })
 }
 
+function sparklineLine(id, values, width) {
+    $("." + id).sparkline(values, {
+        type: "line",
+        width: width,
+        height: 35,
+        lineColor: '#fff',
+        fillColor: 'rgba(0,0,0,0)',
+        lineWidth: '#d6d8d9',
+        spotColor: '#d6d8d9',
+        spotRadius: 3,
+        maxSpotColor: 'rgba(0,0,0,0)',
+        minSpotColor: 'rgba(0,0,0,0)',        
+        highlightSpotColor: '#fff',
+        highlightLineColor: '#d6d8d9'
+    })
+}
+
 var traffic = <?= json_encode($traffic) ?>
 
 var $context  = jQuery('.js-chartjs-lines')[0].getContext('2d');
@@ -279,6 +296,21 @@ $(".stats-bar")[0] && sparklineBar(
     "#d6d8d9", 
     2
 );
+
+$(".stats-line")[0] && sparklineLine(
+    "stats-line", 
+    <?= json_encode($chart_plays) ?>, 
+    68
+)
+
+$(".stats-bar-2")[0] && sparklineBar(
+    "stats-bar-2", 
+    <?= json_encode($unique_downloads) ?>, 
+    "35px", 
+    <?= ceil(42 / count($unique_downloads)) ?>, 
+    "#d6d8d9", 
+    2
+)
 
 </script>
 
