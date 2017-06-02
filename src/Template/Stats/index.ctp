@@ -77,7 +77,7 @@
                             <div class="dash-widget-visits"></div>
                         </div>
 
-                        <div class="dwih-title">For the past 30 days</div>
+                        <div class="dwih-title"><?= __('Views in last 30 days') ?></div>
                     </div>
 
                     <div class="list-group lg-even-white">
@@ -256,11 +256,11 @@ function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
     })
 }
 
-function sparklineLine(id, values, width) {
+function sparklineLine(id, values, width, height = 35) {
     $("." + id).sparkline(values, {
         type: "line",
         width: width,
-        height: 35,
+        height: height,
         lineColor: '#fff',
         fillColor: 'rgba(0,0,0,0)',
         lineWidth: '#d6d8d9',
@@ -316,6 +316,13 @@ $(".stats-line-2")[0] && sparklineLine(
     "stats-line-2", 
     <?= json_encode($unique_plays) ?>, 
     68, 
+)
+
+$(".dash-widget-visits")[0] && sparklineLine(
+    "dash-widget-visits", 
+    <?= json_encode($views_month) ?>, 
+    "100%",
+    70
 )
 
 </script>

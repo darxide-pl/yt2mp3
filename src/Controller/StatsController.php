@@ -43,6 +43,8 @@ class StatsController extends AppController
 		$unique_downloads = $this->chart_unique_downloads();
 		$unique_plays = $this->chart_unique_plays();
 
+		$views_month = $this->views_month();
+
 		$this->set(compact(
 			'total_mb', 
 			'total_dw', 
@@ -56,7 +58,8 @@ class StatsController extends AppController
 			'chart_downloads', 
 			'chart_plays', 
 			'unique_downloads', 
-			'unique_plays'
+			'unique_plays',
+			'views_month'
 		));
 
 	}
@@ -294,6 +297,33 @@ class StatsController extends AppController
 		}
 
 		return $data;		
+	}
+
+	private function views_month() {
+		$query = $this->SessionViews->find('all' , [
+					'fields' => [
+						'n' => 'COUNT(id)', 
+						'd' => 'DATE(add_date)'
+					], 
+					'conditions' => [
+						'add_date >=' => date('Y-m-d H:i:s' , strtotime('-1 month'))
+					], 
+					'group' => ['d'],
+					'order' => [
+						'd' => 'ASC'
+					]
+				])
+			->toArray();
+
+		$data = [];
+
+		if(count($query)) {
+			foreach($query as $v) {
+				$data[] = $v->n;
+			}
+		}
+
+		return $data;
 	}
 
 }
