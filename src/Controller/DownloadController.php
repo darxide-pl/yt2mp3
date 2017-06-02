@@ -226,6 +226,7 @@ class DownloadController extends AppController
 		$this->loadModel('Items');
 		$this->loadModel('ItemPlays');
 		$this->loadComponent('Time');
+		$this->Session->click('play');
 
 		$item = $this->Items->findByLink($t['id'])->first();
 

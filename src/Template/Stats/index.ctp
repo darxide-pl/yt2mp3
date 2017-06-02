@@ -137,8 +137,8 @@
                             <div class="pie-title"><?= __('Convert clicks') ?></div>
                         </div>
                         <div class="easy-pie sub-pie-2" data-percent="84">
-                            <div class="percent">84</div>
-                            <div class="pie-title">Total Opened</div>
+                            <div class="percent"><?= $this->Number->shorten($click_play) ?></div>
+                            <div class="pie-title"><?= __('Play clicks') ?></div>
                         </div>
                         <div class="easy-pie sub-pie-2" data-percent="21">
                             <div class="percent">21</div>

@@ -47,6 +47,7 @@ class StatsController extends AppController
 
 		$click_download = $this->clicks('download');
 		$click_convert = $this->clicks('convert');
+		$click_play = $this->clicks('play');
 
 		$this->set(compact(
 			'total_mb', 
@@ -64,7 +65,8 @@ class StatsController extends AppController
 			'unique_plays',
 			'views_month', 
 			'click_download', 
-			'click_convert'
+			'click_convert', 
+			'click_play'
 		));
 
 	}
