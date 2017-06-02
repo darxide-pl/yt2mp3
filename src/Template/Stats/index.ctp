@@ -246,6 +246,7 @@ var $globalOptions = {
     tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
 };  
 
+<<<<<<< HEAD
 function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
     $("." + id).sparkline(values, {
         type: "bar",
@@ -255,6 +256,9 @@ function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
         barSpacing: barSpacing
     })
 }
+=======
+
+>>>>>>> master
 
 var traffic = <?= json_encode($traffic) ?>
 
@@ -271,6 +275,7 @@ var $data = {
 };
 $chartLines = new Chart($context).Line($data, $globalOptions); 
 
+<<<<<<< HEAD
 $(".stats-bar")[0] && sparklineBar(
     "stats-bar", 
     <?= json_encode($chart_downloads) ?>, 
@@ -280,6 +285,8 @@ $(".stats-bar")[0] && sparklineBar(
     2
 );
 
+=======
+>>>>>>> master
 </script>
 
 <?= $this->end() ?>

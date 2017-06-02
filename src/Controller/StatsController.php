@@ -48,8 +48,12 @@ class StatsController extends AppController
 			'page_views', 
 			'page_visitors', 
 			'clicks', 
+<<<<<<< HEAD
 			'traffic', 
 			'chart_downloads'
+=======
+			'traffic'
+>>>>>>> master
 		));
 
 	}
@@ -168,14 +172,21 @@ class StatsController extends AppController
 						'd'
 					], 
 					'order' => [
+<<<<<<< HEAD
 						'd' => 'DESC'
+=======
+						'd' => 'ASC'
+>>>>>>> master
 					], 
 					'limit' => 50
 				])
 			->toArray();
 
 		$data = [];
+<<<<<<< HEAD
 		$query = array_reverse($query);
+=======
+>>>>>>> master
 
 		if(count($query)) {
 			foreach($query as $k => $v) {
@@ -185,6 +196,7 @@ class StatsController extends AppController
 
 		return $data;
 	}
+<<<<<<< HEAD
 
 	public function chart_downloads() {
 		$query = $this->ItemDownloads->find('all' , [
@@ -211,4 +223,6 @@ class StatsController extends AppController
 
 		return $data;
 	}
+=======
+>>>>>>> master
 }
