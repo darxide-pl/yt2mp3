@@ -37,6 +37,8 @@ class SearchController extends AppController
 
         $t = $this->request->getData();
         $this->loadComponent('Time');
+        $this->loadComponent('Search');
+        $this->Search->register($query);
 
         $config = [];
         $config = [
