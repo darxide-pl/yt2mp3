@@ -52,6 +52,24 @@ class SessionComponent extends Component
 			return FALSE;
 		}
 
+		if(!$this->SessionClicks) {
+			$this->SessionClicks = TableRegistry::get('SessionClicks');
+		}
+
+		if(!$session = $this->init()) {
+			return FALSE;
+		}
+
+		$click = $this->SessionClicks->newEntity();
+		$click->add_date = date('Y-m-d H:i:s');
+		$click->session_id = $session;
+		$click->action = $action;
+
+		if(!$this->SessionClicks->save($click)) {
+			return FALSE;
+		}
+		
+		return TRUE;
 	}
 
 	/**

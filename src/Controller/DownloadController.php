@@ -64,6 +64,7 @@ class DownloadController extends AppController
 	public function convert() {
 
 		$t = $this->request->getData();
+		$this->Session->click('convert');
 
 		if(!isset($t['link'])) {
 			$this->error(__('You must paste youtube link'));
@@ -132,6 +133,7 @@ class DownloadController extends AppController
 	public function download() {
 		
 		$t = $this->request->getData();
+		$this->Session->click('download');
 		$this->loadModel('Items');
 		$this->loadModel('ItemDownloads');
 
@@ -199,6 +201,7 @@ class DownloadController extends AppController
 	public function play() {
 		
 		$t = $this->request->getData();
+		$this->Session->click('play');
 		$this->loadModel('ItemPlays');
 		$this->loadModel('Items');
 

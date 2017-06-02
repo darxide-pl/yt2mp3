@@ -41,6 +41,7 @@ class SearchController extends AppController
         $this->loadComponent('Time');
         $this->loadComponent('Search');
         $this->Search->register($query);
+        $this->Session->click('search');
 
         $config = [];
         $config = [
