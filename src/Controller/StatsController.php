@@ -31,6 +31,8 @@ class StatsController extends AppController
 		$total_udw = $this->total_unique_downloads();
 		$total_upl = $this->total_unique_plays();
 
+		$traffic = $this->download_traffic();
+
 		$page_views = $this->page_views();
 		$page_visitors = $this->page_visitors();
 		$clicks = $this->total_clicks();
@@ -43,7 +45,8 @@ class StatsController extends AppController
 			'total_upl', 
 			'page_views', 
 			'page_visitors', 
-			'clicks'
+			'clicks', 
+			'traffic'
 		));
 
 	}
@@ -142,4 +145,40 @@ class StatsController extends AppController
 		return $query->total;
 	}
 
+	private function download_traffic() {
+		$query = $this->ItemDownloads->find('all' , [
+					'fields' => [
+						'd' => 'DATE(ItemDownloads.add_date)', 
+						'size' => 'ROUND(SUM(size) /1024 /1024, 2)'
+					], 
+					'join' => [
+						[
+							'table' => 'items', 
+							'alias' => 't2', 
+							'type' => 'inner', 
+							'conditions' => [
+								't2.id = ItemDownloads.item_id'
+							]
+						]
+					], 
+					'group' => [
+						'd'
+					], 
+					'order' => [
+						'd' => 'ASC'
+					], 
+					'limit' => 50
+				])
+			->toArray();
+
+		$data = [];
+
+		if(count($query)) {
+			foreach($query as $k => $v) {
+				$data[$v->d] = $v->size;
+			}
+		}
+
+		return $data;
+	}
 }

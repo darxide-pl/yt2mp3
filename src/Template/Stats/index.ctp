@@ -10,7 +10,7 @@
 
     <div class="card-body">
         <div class="chart-edge">
-            <div id="curved-line-chart" class="flot-chart "></div>
+            <canvas class="js-chartjs-lines"></canvas>
         </div>
     </div>
 </div>
@@ -151,14 +151,6 @@
         </div>
 
         <div class="col-md-4 col-sm-6">
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-6">
-        <!-- Recent Items -->
         <div class="card">
             <div class="card-header">
                 <h2>Recent Items <small>Phasellus condimentum ipsum id auctor imperdie</small></h2>
@@ -224,196 +216,6 @@
             <div id="recent-items-chart" class="flot-chart"></div>
         </div>
 
-        <!-- Todo -->
-        <div id="todo" class="card">
-            <div class="card-header ch-alt">
-                <h2>Todo Lists <small>Add, edit and manage your Todo Lists</small></h2>
-            </div>
-
-            <div class="card-body card-padding">
-                <div class="t-add">
-                    <i class="ta-btn zmdi zmdi-plus" data-ma-action="todo-form-open"></i>
-
-                    <div class="ta-block">
-                        <textarea placeholder="What you want to do..."></textarea>
-
-                        <div class="tab-actions">
-                            <a data-ma-action="todo-form-close" href="#"><i class="zmdi zmdi-close"></i></a>
-                            <a data-ma-action="todo-form-close" href="#"><i class="zmdi zmdi-check"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="list-group">
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        Duis vitae nibh molestie pharetra augue vitae
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        Duis vitae nibh molestie pharetra augue vitae
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        In vel imperdiet leoorbi mollis leo sit amet quam fringilla varius mauris orci turpis
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        Suspendisse quis sollicitudin erosvel dictum nunc
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        Curabitur egestas finibus sapien quis faucibusras bibendum ut justo at sagittis. In hac habitasse platea dictumst
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-group-item media">
-                        <div class="pull-right">
-                            <ul class="actions">
-                                <li class="dropdown">
-                                    <a href="#" data-toggle="dropdown">
-                                        <i class="zmdi zmdi-more-vert"></i>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Delete</a></li>
-                                        <li><a href="#">Archive</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="media-body">
-                            <div class="checkbox checkbox-light">
-                                <label>
-                                    <input type="checkbox">
-                                    <i class="input-helper"></i>
-                                    <span>
-                                        Suspendisse potenti. Cras dolor augue, tincidunt sit amet lorem id, blandit rutrum libero
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -425,48 +227,42 @@
 <script src="/vendors/sparklines/jquery.sparkline.min.js"></script>
 <script src="/vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
 
+<script src="/vendors/chartjs/Chart.min.js"></script>
+
 <script type="text/javascript">
-var options = {
-    series: {
-        shadowSize: 0,
-        lines: {
-            show: !1,
-            lineWidth: 0
-        }
-    },
-    grid: {
-        borderWidth: 0,
-        labelMargin: 10,
-        hoverable: !0,
-        clickable: !0,
-        mouseActiveRadius: 6
-    },
-    xaxis: {
-        tickDecimals: 0,
-        ticks: !1
-    },
-    yaxis: {
-        tickDecimals: 0,
-        ticks: !1
-    },
-    legend: {
-        show: !1
-    }
+var $globalOptions = {
+    scaleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    scaleFontColor: '#999',
+    scaleFontStyle: '600',
+    tooltipTitleFontFamily: "'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    tooltipCornerRadius: 3,
+    maintainAspectRatio: false,
+    responsive: true, 
+    scaleGridLineColor : 'rgba(0,0,0,0)',
+    scaleShowVerticalLines: false, 
+    scaleShowHorizontalLines: false,
+    pointDot : false, 
+    showScale : false, 
+    tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
+};  
+
+
+
+var traffic = <?= json_encode($traffic) ?>
+
+var $context  = jQuery('.js-chartjs-lines')[0].getContext('2d');
+var $data = {
+    labels: Object.keys(traffic),
+    datasets: [
+        {
+            label: "<?= h(__('Traffic')) ?>",
+            fillColor: '#d6d8d9',
+            data: Object.values(traffic)
+        },      
+    ]
 };
+$chartLines = new Chart($context).Line($data, $globalOptions); 
 
-for (var d1 = [], i = 0; 10 >= i; i += 1) d1.push([i, parseInt(30 * Math.random())]);
-console.log(d1)
-
-$("#curved-line-chart")[0] && $.plot($("#curved-line-chart"), [{
-    data: d1,
-    lines: {
-        show: !0,
-        fill: .98
-    },
-    label: "Product 1",
-    stack: !0,
-    color: "#1f292f"
-}], options)    
 </script>
 
 <?= $this->end() ?>
