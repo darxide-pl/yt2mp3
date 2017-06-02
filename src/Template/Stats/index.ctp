@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-3">
             <div class="mini-charts-item">
-                <div class="clearfix">
+                <div class="clearfix relative">
                     <div class="chart stats-bar"></div>
                     <div class="count">
                         <small><?= __('Total downloads') ?></small>
@@ -31,7 +31,7 @@
 
         <div class="col-sm-6 col-md-3">
             <div class="mini-charts-item">
-                <div class="clearfix">
+                <div class="clearfix relative">
                     <div class="chart stats-line"></div>
                     <div class="count">
                         <small><?= __('Total plays') ?></small>
@@ -43,7 +43,7 @@
 
         <div class="col-sm-6 col-md-3">
             <div class="mini-charts-item">
-                <div class="clearfix">
+                <div class="clearfix relative">
                     <div class="chart stats-bar-2"></div>
                     <div class="count">
                         <small><?= __('Unique videos downloaded') ?></small>
@@ -55,7 +55,7 @@
 
         <div class="col-sm-6 col-md-3">
             <div class="mini-charts-item card">
-                <div class="clearfix">
+                <div class="clearfix relative">
                     <div class="chart stats-line-2"></div>
                     <div class="count">
                         <small><?= __('Unique videos played') ?></small>
@@ -246,7 +246,15 @@ var $globalOptions = {
     tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
 };  
 
-
+function sparklineBar(id, values, height, barWidth, barColor, barSpacing) {
+    $("." + id).sparkline(values, {
+        type: "bar",
+        height: height,
+        barWidth: barWidth,
+        barColor: barColor,
+        barSpacing: barSpacing
+    })
+}
 
 var traffic = <?= json_encode($traffic) ?>
 
@@ -262,6 +270,15 @@ var $data = {
     ]
 };
 $chartLines = new Chart($context).Line($data, $globalOptions); 
+
+$(".stats-bar")[0] && sparklineBar(
+    "stats-bar", 
+    <?= json_encode($chart_downloads) ?>, 
+    "35px", 
+    <?= ceil(42 / count($chart_downloads)) ?>, 
+    "#d6d8d9", 
+    2
+);
 
 </script>
 

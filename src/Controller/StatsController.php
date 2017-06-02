@@ -37,6 +37,8 @@ class StatsController extends AppController
 		$page_visitors = $this->page_visitors();
 		$clicks = $this->total_clicks();
 
+		$chart_downloads = $this->chart_downloads();
+
 		$this->set(compact(
 			'total_mb', 
 			'total_dw', 
@@ -46,7 +48,8 @@ class StatsController extends AppController
 			'page_views', 
 			'page_visitors', 
 			'clicks', 
-			'traffic'
+			'traffic', 
+			'chart_downloads'
 		));
 
 	}
@@ -165,17 +168,44 @@ class StatsController extends AppController
 						'd'
 					], 
 					'order' => [
-						'd' => 'ASC'
+						'd' => 'DESC'
 					], 
 					'limit' => 50
 				])
 			->toArray();
 
 		$data = [];
+		$query = array_reverse($query);
 
 		if(count($query)) {
 			foreach($query as $k => $v) {
 				$data[$v->d] = $v->size;
+			}
+		}
+
+		return $data;
+	}
+
+	public function chart_downloads() {
+		$query = $this->ItemDownloads->find('all' , [
+					'fields' => [
+						'n' => 'COUNT(id)',
+						'd' => 'DATE(add_date)'
+					], 
+					'group' => ['d'], 
+					'order' => [
+						'd' => 'DESC'
+					], 
+					'limit' => 14
+				])
+			->toArray();
+
+		$data = [];
+		$query = array_reverse($query);
+
+		if(count($query)) {
+			foreach($query as $v) {
+				$data[] = $v->n;
 			}
 		}
 
