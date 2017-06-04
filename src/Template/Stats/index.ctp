@@ -217,8 +217,13 @@
             type: "bar",
             height: 35,
             barWidth: barWidth,
-            barColor: "#d6d8d9",
-            barSpacing: 2
+            barSpacing: 2,
+            <?php if($this->Theme->get() == 'dark'): ?>
+                barColor: "#d6d8d9"
+            <?php endif; ?>
+            <?php if($this->Theme->get() == 'light'): ?>
+                barColor : '#0b0b0c'
+            <?php endif; ?>
         })
     }
 
@@ -227,15 +232,20 @@
             type: "line",
             width: width,
             height: height,
-            lineColor: '#fff',
             fillColor: 'rgba(0,0,0,0)',
-            lineWidth: '#d6d8d9',
+            lineWidth: 1,
             spotColor: '#d6d8d9',
             spotRadius: 3,
             maxSpotColor: 'rgba(0,0,0,0)',
             minSpotColor: 'rgba(0,0,0,0)',        
             highlightSpotColor: '#fff',
-            highlightLineColor: '#d6d8d9'
+            highlightLineColor: '#d6d8d9',
+            <?php if($this->Theme->get() == 'dark'): ?>
+                lineColor: '#fff',
+            <?php endif; ?>
+            <?php if($this->Theme->get() == 'light'): ?>
+                lineColor: '#0b0b0c'
+            <?php endif; ?>
         })
     }
 
