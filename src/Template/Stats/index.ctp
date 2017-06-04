@@ -287,7 +287,13 @@
         $(".stats-bar")[1],
         <?= json_encode($last_views) ?>, 
         <?= ceil(42 / count($last_views)) ?>, 
-    );     
+    )
+
+    sparklineBar(
+        $(".stats-bar-2")[1],
+        <?= json_encode($last_visitors) ?>,  
+        <?= ceil(42 / count($last_visitors)) ?>
+    )    
 }()
 
 </script>
