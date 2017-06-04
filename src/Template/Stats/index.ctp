@@ -151,7 +151,7 @@
         </div>
 
         <div class="col-md-4 col-sm-6">
-        <div class="card">
+        <div class="card" style="overflow:hidden;">
             <div class="card-header">
                 <h2><?= __('Top search') ?></h2>
             </div>
@@ -176,7 +176,9 @@
                     </tbody>
                 </table>
             </div>
-            <div id="recent-items-chart" class="flot-chart"></div>
+            <div id="recent-items-chart" class="flot-chart">
+                <canvas class="js-chartjs-lines"></canvas>
+            </div>
         </div>
 
         </div>
@@ -207,7 +209,7 @@
         scaleShowHorizontalLines: false,
         pointDot : false, 
         showScale : false, 
-        tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>MB'
+        tooltipTemplate : '<%if (label){%><%=label%>: <%}%><%= value %>'
     };  
 
     function sparklineBar(el, values, barWidth) {
@@ -299,7 +301,54 @@
         $(".stats-line")[1],
         <?= json_encode($last_clicks) ?>, 
         68
-    )    
+    )     
+
+    var options = {
+        series: {
+            shadowSize: 0,
+            lines: {
+                show: !1,
+                lineWidth: 0
+            }
+        },
+        grid: {
+            borderWidth: 0,
+            labelMargin: 10,
+            hoverable: !0,
+            clickable: !0,
+            mouseActiveRadius: 6
+        },
+        xaxis: {
+            tickDecimals: 0,
+            ticks: !1
+        },
+        yaxis: {
+            tickDecimals: 0,
+            ticks: !1
+        },
+        legend: {
+            show: !1
+        }
+    };   
+
+    ;+function() {
+
+        let searches = <?= json_encode($last_search) ?>
+
+        var $context  = jQuery('.js-chartjs-lines')[1].getContext('2d');
+        var $data = {
+            labels: Object.keys(searches),
+            datasets: [
+                {
+                    label: "<?= h(__('Last searches')) ?>",
+                    fillColor: '#3d464b',
+                    data: Object.values(searches)
+                },      
+            ]
+        };
+        $chartLines = new Chart($context).Line($data, $globalOptions);     
+    }()
+
 }()
 
 </script>
