@@ -78,3 +78,14 @@
 #recent-items-chart {
 	margin-bottom: -6px;
 }
+
+.modal {
+	.form {
+		&-control {
+		    border: 1px solid #ccc;
+		    padding-left: 10px;
+		    border-radius: 4px;
+		    color: #333;			
+		}
+	}
+}

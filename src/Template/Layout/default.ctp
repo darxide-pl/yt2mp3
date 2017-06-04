@@ -36,10 +36,16 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link rel="stylesheet" type="text/css" href="/vendors/select2/select2.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
         
+    <?php if($this->Theme->get() == 'dark'): ?>
+        <link class="__theme-dark" href="/css/app_1.min.css" rel="stylesheet">
+        <link class="__theme-dark" href="/css/app_2.min.css" rel="stylesheet">
+        <link class="__theme-dark" rel="stylesheet" type="text/css" href="/css/main.css" />
+    <?php else: ?>
+        <link class="__theme-light" href="/css/app_1-light.min.css" rel="stylesheet">
+        <link class="__theme-light" href="/css/app_2-light.min.css" rel="stylesheet">    
+        <link class="__theme-light" rel="stylesheet" type="text/css" href="/css/main-light.css" />
+    <?php endif; ?>
 
-    <link href="/css/app_1.min.css" rel="stylesheet">
-    <link href="/css/app_2.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
@@ -75,6 +81,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </li>
         </ul>
     </footer>    
+
+    <?= $this->Element('Modal/theme') ?>
 
     <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>        

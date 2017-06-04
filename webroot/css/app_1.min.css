@@ -10235,7 +10235,6 @@ html:not(.ie9) .select:before {
     width: 30px;
     background-position: right calc(100% - 7px);
     background-repeat: no-repeat;
-    background-image: url(../img/select.png);
     pointer-events: none;
     z-index: 5
 }

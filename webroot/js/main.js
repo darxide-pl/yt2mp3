@@ -32,6 +32,10 @@
 		}
 	})
 
+	$(document).on('change' , '.__theme', function() {
+		themes.change()
+	})
+
 }()
 
 const youtube = {
@@ -181,6 +185,59 @@ const youtube = {
 	}
 }
 
+const themes = {
+	change : function() {
+
+		let theme = $('.__theme').val()
+		switch (theme) {
+			case 'light': {
+				themes.append(theme)
+				themes.clean('dark')
+				themes.save(theme)
+				break
+			}
+			case 'dark':   
+			default: {
+				themes.append(theme)
+				themes.clean('light')
+				themes.save(theme)
+				break
+			}
+		}
+
+	}, 
+
+	append : function(theme) {
+		for(let k in themes[theme]) {
+			$('head').append('<link class="__theme-'+theme+'" rel="stylesheet" type="text/css" href="'+themes[theme][k]+'" />')
+		}
+	},
+
+	save : function(theme) {
+		let date = new Date()
+		date.setTime(date.getTime() + (30*24*60*60*1000))
+		document.cookie = 'theme='+theme+'; expires'+date.toUTCString()
+	},
+
+	clean : function(theme) {
+		setTimeout(function() {
+			$('.__theme-'+theme).remove()
+		}, 450)
+	},
+
+	dark : [
+		'/css/app_1.min.css',
+		'/css/app_2.min.css', 
+		'/css/main.css'
+	],
+
+	light : [
+		'/css/app_1-light.min.css', 
+		'/css/app_2-light.min.css', 
+		'/css/main-light.css'
+	]
+}
+
 const flash = {
 	success : function(msg) {
 		$.growl({
@@ -209,8 +266,12 @@ const flash = {
 
 	auto : function() {
 		$( document ).ajaxComplete(function( event, xhr, settings ) {
-			let response = JSON.parse(xhr.responseText)
-			flash.parse(response)
+			try {
+				let response = JSON.parse(xhr.responseText)
+				flash.parse(response)
+			} catch(Exception) {
+				console.log('Cant read input as JOSN')
+			}
 		})	
 
 		$( document ).ajaxError(function( event, request, settings ) {

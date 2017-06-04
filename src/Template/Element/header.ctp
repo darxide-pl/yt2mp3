@@ -16,10 +16,12 @@
 
         <li class="pull-right">
             <ul class="hi-menu">
-
                 <li data-ma-action="search-open">
                     <a href="#"><i class="him-icon zmdi zmdi-search"></i></a>
                 </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#theme"><i class="him-icon zmdi zmdi-settings"></i></a>
+                </li>                
             </ul>
         </li>
     </ul>

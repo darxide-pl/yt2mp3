@@ -51,6 +51,8 @@ class AppController extends Controller
             'expires' => '+8 hours'
         ]);
 
+        $this->Cookie->configKey('theme' , 'encryption' , FALSE);
+
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see http://book.cakephp.org/3.0/en/controllers/components/security.html
