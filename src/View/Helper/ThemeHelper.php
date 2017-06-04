@@ -8,8 +8,6 @@ class ThemeHelper extends Helper
 
 	public function get() {
 
-		$this->init();
-
 		if($_COOKIE['theme'] == 'light') {
 			return 'light';
 		}
