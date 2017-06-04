@@ -294,6 +294,12 @@
         <?= json_encode($last_visitors) ?>,  
         <?= ceil(42 / count($last_visitors)) ?>
     )    
+
+    sparklineLine(
+        $(".stats-line")[1],
+        <?= json_encode($last_clicks) ?>, 
+        68
+    )    
 }()
 
 </script>

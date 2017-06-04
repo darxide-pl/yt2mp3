@@ -55,6 +55,7 @@ class StatsController extends AppController
 
 		$last_views = $this->last_views();
 		$last_visitors = $this->last_visitors();
+		$last_clicks = $this->last_clicks();
 
 		$this->set(compact(
 			'total_mb', 
@@ -77,7 +78,8 @@ class StatsController extends AppController
 			'click_search', 
 			'top_search', 
 			'last_views', 
-			'last_visitors'
+			'last_visitors', 
+			'last_clicks'
 		));
 
 	}
@@ -404,6 +406,32 @@ class StatsController extends AppController
 
 	public function last_visitors() {
 		$query = $this->Sessions->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(id)', 
+						'd' => 'DATE(add_date)'
+					], 
+					'group' => ['d'], 
+					'order' => [
+						'd' => 'DESC'
+					], 
+					'limit' => 14
+				])
+			->toArray();
+
+		$data = [];
+		$query = array_reverse($query);
+
+		if(count($query)) {
+			foreach($query as $v) {
+				$data[] = $v->total;
+			}
+		}
+
+		return $data;
+	}
+
+	private function last_clicks() {
+		$query = $this->SessionClicks->find('all' , [
 					'fields' => [
 						'total' => 'COUNT(id)', 
 						'd' => 'DATE(add_date)'
