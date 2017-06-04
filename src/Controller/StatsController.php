@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Items Controller
@@ -50,6 +51,8 @@ class StatsController extends AppController
 		$click_play = $this->clicks('play');
 		$click_search = $this->clicks('search');
 
+		$top_search = $this->top_search();
+
 		$this->set(compact(
 			'total_mb', 
 			'total_dw', 
@@ -68,7 +71,8 @@ class StatsController extends AppController
 			'click_download', 
 			'click_convert', 
 			'click_play', 
-			'click_search'
+			'click_search', 
+			'top_search'
 		));
 
 	}
@@ -347,6 +351,24 @@ class StatsController extends AppController
 			->first();
 
 		return $query->n;
+	}
+
+	private function top_search() {
+		$conn = ConnectionManager::get('default');
+		$stmt = $conn->execute('
+				SELECT *,COUNT(t.search_id) as n 
+				FROM ( 
+					SELECT t1.search_id, t1.add_date, t2.query 
+					FROM search_performs t1 
+					INNER JOIN searches t2 ON t2.id = t1.search_id
+					ORDER BY t1.add_date DESC
+				) AS t 
+				GROUP BY t.search_id
+				ORDER BY n DESC
+				LIMIT 5 
+			');
+
+		return $stmt->fetchAll(\PDO::FETCH_OBJ);
 	}
 
 }

@@ -153,63 +153,26 @@
         <div class="col-md-4 col-sm-6">
         <div class="card">
             <div class="card-header">
-                <h2>Recent Items <small>Phasellus condimentum ipsum id auctor imperdie</small></h2>
-                <ul class="actions">
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown">
-                            <i class="zmdi zmdi-more-vert"></i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li>
-                                <a href="#">Refresh</a>
-                            </li>
-                            <li>
-                                <a href="#">Settings</a>
-                            </li>
-                            <li>
-                                <a href="#">Other Settings</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <h2><?= __('Top search') ?></h2>
             </div>
 
             <div class="card-body m-t-0">
                 <table class="table table-inner table-vmiddle">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th style="width: 60px">Price</th>
+                            <th><?= __('Query') ?></th>
+                            <th><?= __('Count') ?></th>
+                            <th><?= __('Last search') ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="f-500">2569</td>
-                            <td>Samsung Galaxy Mega</td>
-                            <td class="f-500">$521</td>
-                        </tr>
-                        <tr>
-                            <td class="f-500">9658</td>
-                            <td>Huawei Ascend P6</td>
-                            <td class="f-500">$440</td>
-                        </tr>
-                        <tr>
-                            <td class="f-500">1101</td>
-                            <td>HTC One M8</td>
-                            <td class="f-500">$680</td>
-                        </tr>
-                        <tr>
-                            <td class="f-500">6598</td>
-                            <td>Samsung Galaxy Alpha</td>
-                            <td class="f-500">$870</td>
-                        </tr>
-                        <tr>
-                            <td class="f-500">4562</td>
-                            <td>LG G3</td>
-                            <td class="f-500">$690</td>
-                        </tr>
+                        <?php if(count($top_search)):foreach($top_search as $v): ?>
+                            <tr>
+                                <td><?= $v->query ?></td>
+                                <td><?= $v->n ?></td>
+                                <td><?= $v->add_date ?></td>
+                            </tr>
+                        <?php endforeach;endif; ?>
                     </tbody>
                 </table>
             </div>
