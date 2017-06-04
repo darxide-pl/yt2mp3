@@ -48,7 +48,7 @@ class AppController extends Controller
 
         $this->Cookie->configKey('v', 'path', '/');
         $this->Cookie->configKey('v', [
-            'expires' => '+1 day'
+            'expires' => '+8 hours'
         ]);
 
         /*

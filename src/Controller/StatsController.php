@@ -53,6 +53,8 @@ class StatsController extends AppController
 
 		$top_search = $this->top_search();
 
+		$last_views = $this->last_views();
+
 		$this->set(compact(
 			'total_mb', 
 			'total_dw', 
@@ -72,7 +74,8 @@ class StatsController extends AppController
 			'click_convert', 
 			'click_play', 
 			'click_search', 
-			'top_search'
+			'top_search', 
+			'last_views'
 		));
 
 	}
@@ -369,6 +372,32 @@ class StatsController extends AppController
 			');
 
 		return $stmt->fetchAll(\PDO::FETCH_OBJ);
+	}
+
+	private function last_views() {
+		$query = $this->SessionViews->find('all' , [
+					'fields' => [
+						'total' => 'COUNT(id)', 
+						'd' => 'DATE(add_date)'
+					], 
+					'group' => ['d'],
+					'order' => [
+						'd' => 'DESC'
+					],
+					'limit' => 14
+				])
+			->toArray();
+
+		$data = [];
+		$query = array_reverse($query);
+
+		if(count($query)) {
+			foreach($query as $v) {
+				$data[] = $v->total;
+			}
+		}
+
+		return $data;
 	}
 
 }

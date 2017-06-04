@@ -282,6 +282,12 @@
         "100%",
         68
     )
+
+    sparklineBar(
+        $(".stats-bar")[1],
+        <?= json_encode($last_views) ?>, 
+        <?= ceil(42 / count($last_views)) ?>, 
+    );     
 }()
 
 </script>
