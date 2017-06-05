@@ -114,3 +114,7 @@
 #recent-items-chart {
 	margin-bottom: -5px;
 }
+
+.percent::after {
+	display: none !important;
+}
